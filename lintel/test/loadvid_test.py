@@ -23,6 +23,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import lintel
+import ipdb
+import argparse
 
 
 def _loadvid_test_vanilla(filename, width, height):
@@ -69,8 +71,8 @@ def _loadvid_test_frame_nums(filename, width, height):
     with open(filename, 'rb') as f:
         encoded_video = f.read()
 
-    num_frames = 32
-    for _ in range(10):
+    num_frames = 2
+    for _ in range(1):
         start = time.perf_counter()
 
         i = 0
@@ -94,27 +96,21 @@ def _loadvid_test_frame_nums(filename, width, height):
             plt.show()
 
 
-@click.command()
-@click.option('--filename',
-              default=None,
-              type=str,
-              help='Name of the input video.')
-@click.option('--height',
-              default=None,
-              type=int,
-              help='The _exact_ height of the input video.')
-@click.option('--width',
-              default=None,
-              type=int,
-              help='The _exact_ width of the input video.')
-def loadvid_test(filename, width, height):
-    """Tests the lintel.loadvid Python extension.
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='PyTorch Training')
+    parser.add_argument('--filename',
+                        default='/Users/fabien/Datasets/VLOG/avi/0/0/I/v_LdhYI_Pq00I/003/clip.mp4',
+                        type=str,
+                        help='Name of the input video.')
+    parser.add_argument('--height',
+                        default=368,
+                        type=int,
+                        help='The _exact_ height of the input video.')
+    parser.add_argument('--width',
+                        default=654,
+                        type=int,
+                        help='The _exact_ width of the input video.')
+    args = parser.parse_args()
 
-    This program will run tests to sanity check -- visually, by using
-    matplotlib to plot individual frames -- that Lintel is working.
-
-    This program also acts as a sample use case for the APIs provided by
-    Lintel.
-    """
-    _loadvid_test_vanilla(filename, width, height)
-    _loadvid_test_frame_nums(filename, width, height)
+    # _loadvid_test_vanilla(args.filename, args.width, args.height)
+    _loadvid_test_frame_nums(args.filename, args.width, args.height)

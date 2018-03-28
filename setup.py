@@ -7,7 +7,7 @@ lintel_module = distutils.core.Extension(
     '_lintel',
     define_macros=[('MAJOR_VERSION', '0'), ('MINOR_VERSION', '0')],
     undef_macros=['NDEBUG'],
-    include_dirs=['/usr/include/ffmpeg', 'lintel'],
+    include_dirs=['/usr/local/Cellar', 'lintel'],
     libraries=['avformat', 'avcodec', 'swscale', 'avutil', 'swresample'],
     sources=['lintel/py_ext/lintelmodule.c',
              'lintel/core/video_decode.c'])

@@ -195,3 +195,10 @@ following BibTeX to cite it:
   howpublished = {\url{https://github.com/dukebw/lintel}},
 }
 ```
+
+
+# Edit for installation
+```shell
+python setup.py build && python setup.py install
+python -c 'import lintel'
+```
