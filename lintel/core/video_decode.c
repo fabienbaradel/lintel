@@ -548,6 +548,12 @@ decode_video_from_frame_nums(uint8_t *dest,
         AVStream *video_stream =
                 vid_ctx->format_context->streams[vid_ctx->video_stream_index];
 
+        // fabien print
+        printf("nb_frames -> %" PRId64 "\n", video_stream->nb_frames);
+        fflush(stdout);
+        // fabien print
+
+
         uint32_t copied_bytes = 0;
         const uint32_t bytes_per_row = 3*frame_rgb->width;
         const uint32_t bytes_per_frame = bytes_per_row*frame_rgb->height;
