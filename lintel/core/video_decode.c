@@ -549,8 +549,8 @@ decode_video_from_frame_nums(uint8_t *dest,
                 vid_ctx->format_context->streams[vid_ctx->video_stream_index];
 
         // fabien print
-        printf("\nnb_frames -> %" PRId64 "\n", video_stream->nb_frames);
-        fflush(stdout);
+//        printf("\nnb_frames -> %" PRId64 "\n", video_stream->nb_frames);
+//        fflush(stdout);
         // fabien print
 
 
@@ -564,14 +564,18 @@ decode_video_from_frame_nums(uint8_t *dest,
                 int32_t desired_frame_num =
                         frame_numbers[out_frame_index];
                 // fabien print
-                printf(" - frame: %" PRId32 "\n", desired_frame_num);
-                fflush(stdout);
-                assert(desired_frame_num < video_stream->nb_frames);
-                assert(desired_frame_num >= current_frame_index);
-                assert(desired_frame_num >= 0);
-                assert((desired_frame_num < video_stream->nb_frames) &&
-                       (desired_frame_num >= current_frame_index) &&
-                       (desired_frame_num >= 0));
+//                printf(" - frame: %" PRId32 "\n", desired_frame_num);
+//                fflush(stdout);
+
+                if(desired_frame_num >= video_stream->nb_frames) {
+                    break;
+                }
+//                assert(desired_frame_num < video_stream->nb_frames);
+//                assert(desired_frame_num >= current_frame_index);
+//                assert(desired_frame_num >= 0);
+//                assert((desired_frame_num < video_stream->nb_frames) &&
+//                       (desired_frame_num >= current_frame_index) &&
+//                       (desired_frame_num >= 0));
                 // fabien print
                 assert((desired_frame_num < video_stream->nb_frames) &&
                        (desired_frame_num >= current_frame_index) &&

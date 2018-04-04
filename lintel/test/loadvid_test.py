@@ -71,7 +71,7 @@ def _loadvid_test_frame_nums(filename, width, height):
     with open(filename, 'rb') as f:
         encoded_video = f.read()
 
-    num_frames = 2
+    num_frames = 3
     for _ in range(1):
         start = time.perf_counter()
 
@@ -80,6 +80,9 @@ def _loadvid_test_frame_nums(filename, width, height):
         for _ in range(num_frames):
             i += int(random.uniform(1, 4))
             frame_nums.append(i)
+
+        frame_nums = [2, 78, 80] # hardcoded examples
+        print("frames to extract: ", frame_nums)
 
         decoded_frames = lintel.loadvid_frame_nums(encoded_video,
                                                    frame_nums=frame_nums,
